@@ -157,7 +157,10 @@ public class DevelopersVisitor implements CommitVisitor {
 		for(Modification m : commit.getModifications()) {
 			modifications += m.getFileName() + ", ";
 		}
-		modifications = modifications.substring(0, modifications.length()-2);
+		int end = modifications.length()-2;
+		if(end < 0)
+			end = 0;
+		modifications = modifications.substring(0, end);
 		return modifications + "]";
 	}
 	

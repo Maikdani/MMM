@@ -2,6 +2,7 @@ package tutorial1;
 
 import java.util.Calendar;
 
+import org.apache.log4j.BasicConfigurator;
 import org.repodriller.RepoDriller;
 import org.repodriller.RepositoryMining;
 import org.repodriller.Study;
@@ -13,6 +14,7 @@ import org.repodriller.scm.GitRepository;
 public class Q1Study implements Study {
 
 	public static void main(String[] args) {
+		BasicConfigurator.configure();
 		new RepoDriller().start(new Q1Study());
 	}
 	
