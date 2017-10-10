@@ -96,9 +96,7 @@ public class DevelopersVisitor implements CommitVisitor {
 		int count = 0;
 		for(Modification m : commit.getModifications()) {
 			parsedDiff = new DiffParser(m.getDiff());
-			System.out.println(parsedDiff.getFullDiff());
 			count += countAdded(parsedDiff.getBlocks());
-			System.out.println("");
 		}
 		return Integer.toString(count);
 	}
@@ -112,8 +110,6 @@ public class DevelopersVisitor implements CommitVisitor {
 			for(DiffLine line : diffLines)
 				if(line.getType().name().equals("ADDED"))
 					count++;
-			
-			System.out.println(count);
 		}
 		
 		return count;
@@ -130,7 +126,6 @@ public class DevelopersVisitor implements CommitVisitor {
 		for(Modification m : commit.getModifications()) {
 			parsedDiff = new DiffParser(m.getDiff());
 			count += countRemoved(parsedDiff.getBlocks());
-			System.out.println("");
 		}
 		return Integer.toString(count);
 	}
@@ -144,8 +139,6 @@ public class DevelopersVisitor implements CommitVisitor {
 			for(DiffLine line : diffLines)
 				if(line.getType().name().equals("REMOVED"))
 					count++;
-			
-			System.out.println(count);
 		}
 		
 		return count;
