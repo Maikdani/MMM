@@ -1,6 +1,5 @@
 package tutorial1;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.repodriller.domain.Commit;

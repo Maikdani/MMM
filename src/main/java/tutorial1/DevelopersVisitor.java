@@ -1,12 +1,8 @@
 package tutorial1;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import org.repodriller.domain.Commit;
-import org.repodriller.domain.DiffBlock;
-import org.repodriller.domain.DiffLine;
-import org.repodriller.domain.DiffParser;
 import org.repodriller.domain.Modification;
 import org.repodriller.persistence.PersistenceMechanism;
 import org.repodriller.scm.CommitVisitor;
@@ -21,7 +17,8 @@ public class DevelopersVisitor implements CommitVisitor {
 					getNS(commit),
 					getND(commit),
 					getNF(commit),
-					getEntropy(commit)
+					getEntropy(commit),
+					getFIX(commit)
 			);
 	}
 
@@ -113,8 +110,18 @@ public class DevelopersVisitor implements CommitVisitor {
 		return subsystem;
 	}
 	
-	public boolean getFIX() {
-		return true;
+	public boolean getFIX(Commit commit) {
+		String msg = commit.getMsg().toLowerCase();
+		if(msg.contains("bug"))
+			return true;
+		else if(msg.contains("fix"))
+			return true;
+		else if(msg.contains("defect"))
+			return true;
+		else if(msg.contains("patch"))
+			return true;
+		else
+			return false;
 	}
 
 }

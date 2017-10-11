@@ -26,7 +26,7 @@ public class Q1Study implements Study {
 		date.set(2016, 0, 1);
 		
 		startCat1(date);
-		startCat2(date);
+		//startCat2(date);
 		
 	}
 	
@@ -37,7 +37,7 @@ public class Q1Study implements Study {
 		new RepositoryMining()
 		.in(GitRepository.singleProject("projects/bugzilla"))
 		.through(Commits.since(date))
-		.withThreads(4)
+		.withThreads(1)
 		.process(new DevelopersVisitor(), writer)
 		.mine();
 	}
