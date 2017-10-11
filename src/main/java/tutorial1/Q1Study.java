@@ -37,6 +37,7 @@ public class Q1Study implements Study {
 		new RepositoryMining()
 		.in(GitRepository.singleProject("C:/Users/Maikel/Documents/GitHub/SA/projects/bugzilla"))
 		.through(Commits.since(date))
+		.withThreads(4)
 		.process(new DevelopersVisitor(), writer)
 		.mine();
 	}
@@ -48,6 +49,7 @@ public class Q1Study implements Study {
 		new RepositoryMining()
 		.in(GitRepository.singleProject("C:/Users/Maikel/Documents/GitHub/SA/projects/bugzilla"))
 		.through(Commits.since(date))
+		.withThreads(4)
 		.process(new Category2(), writer2)
 		.mine();
 	}

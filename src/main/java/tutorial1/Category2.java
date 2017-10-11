@@ -14,13 +14,15 @@ import org.repodriller.scm.SCMRepository;
 
 public class Category2 implements CommitVisitor { 
 	public void process(SCMRepository repo, Commit commit, PersistenceMechanism writer) {
-		System.out.println("next");
 		for(Modification m : commit.getModifications()) {
 			writer.write(
 					commit.getHash(),
 					m.getFileName(),
-					getLA(commit, m),
-					getLD(commit, m)
+					m.getAdded(),
+					m.getRemoved(),
+					//getLA(commit, m),
+					//getLD(commit, m),
+					getLT(commit, m)
 			);
 		}
 	}
@@ -81,8 +83,14 @@ public class Category2 implements CommitVisitor {
 	 * @param commit
 	 * @return
 	 */
-	public String getLT(Commit commit) {
-		return "";
+	public int getLT(Commit commit,  Modification m) {
+		String sourceCode = m.getSourceCode();
+		int count = 1;
+		while(sourceCode.contains("\n")) {
+			sourceCode = sourceCode.substring(sourceCode.indexOf("\n") + 1);
+			count++;
+		}
+		return count;
 	}
 	
 }
