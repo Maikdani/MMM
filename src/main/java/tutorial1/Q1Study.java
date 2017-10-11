@@ -20,7 +20,7 @@ public class Q1Study implements Study {
 	
 	
 	public void execute() {
-		PersistenceMechanism writer = new CSVFile("C:/Users/Maikel/Documents/GitHub/SA/csv/bugzilla.csv");
+		PersistenceMechanism writer = new CSVFile("C:/Users/Maikel/Documents/GitHub/SA/csv/bugzillaCat1.csv");
 		initWriter(writer);
 		
 		Calendar date = Calendar.getInstance();
@@ -30,6 +30,15 @@ public class Q1Study implements Study {
 			.through(Commits.since(date))
 			.process(new DevelopersVisitor(), writer)
 			.mine();
+		
+		PersistenceMechanism writer2 = new CSVFile("C:/Users/Maikel/Documents/GitHub/SA/csv/bugzillaCat2.csv");
+		initWriter2(writer2);
+		
+		new RepositoryMining()
+		.in(GitRepository.singleProject("C:/Users/Maikel/Documents/GitHub/SA/projects/bugzilla"))
+		.through(Commits.since(date))
+		.process(new Category2(), writer2)
+		.mine();
 	}
 	
 	public void initWriter(PersistenceMechanism writer) {
@@ -39,12 +48,17 @@ public class Q1Study implements Study {
 				"NS",
 				"ND",
 				"NF",
-				"Entropy",
+				"Entropy"
+		);
+	}
+	
+	public void initWriter2(PersistenceMechanism writer) {
+		writer.write(
+				"Hash",
+				"File",
 				"LA",
 				"LD",
-				"LT",
-				"FIX",
-				"Refactor"
+				"LT"
 		);
 	}
 

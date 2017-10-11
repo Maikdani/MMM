@@ -21,10 +21,7 @@ public class DevelopersVisitor implements CommitVisitor {
 					getNS(commit),
 					getND(commit),
 					getNF(commit),
-					getEntropy(commit),
-					getLA(commit),
-					getLD(commit),
-					getLT(commit)
+					getEntropy(commit)
 			);
 	}
 
@@ -86,72 +83,6 @@ public class DevelopersVisitor implements CommitVisitor {
 	public String getEntropy(Commit commit) {
 		return "";
 	}
-	/**
-	 * Get Lines of code added
-	 * @param commit
-	 * @return
-	 */
-	public String getLA(Commit commit) {
-		DiffParser parsedDiff;
-		int count = 0;
-		for(Modification m : commit.getModifications()) {
-			parsedDiff = new DiffParser(m.getDiff());
-			count += countAdded(parsedDiff.getBlocks());
-		}
-		return Integer.toString(count);
-	}
-	
-	public int countAdded(List<DiffBlock> diffBlock) {
-		List<DiffLine> diffLines;
-		int count = 0;
-		
-		for(int i = 0; i < diffBlock.size(); i++) {
-			diffLines = diffBlock.get(i).getLinesInNewFile();
-			for(DiffLine line : diffLines)
-				if(line.getType().name().equals("ADDED"))
-					count++;
-		}
-		
-		return count;
-	}
-	
-	/**
-	 * Lines of code deleted
-	 * @param commit
-	 * @return
-	 */
-	public String getLD(Commit commit) {
-		DiffParser parsedDiff;
-		int count = 0;
-		for(Modification m : commit.getModifications()) {
-			parsedDiff = new DiffParser(m.getDiff());
-			count += countRemoved(parsedDiff.getBlocks());
-		}
-		return Integer.toString(count);
-	}
-	
-	public int countRemoved(List<DiffBlock> diffBlock) {
-		List<DiffLine> diffLines;
-		int count = 0;
-		
-		for(int i = 0; i < diffBlock.size(); i++) {
-			diffLines = diffBlock.get(i).getLinesInOldFile();
-			for(DiffLine line : diffLines)
-				if(line.getType().name().equals("REMOVED"))
-					count++;
-		}
-		
-		return count;
-	}
-	/**
-	 * Get Lines of code in a file before the change
-	 * @param commit
-	 * @return
-	 */
-	public String getLT(Commit commit) {
-		return "";
-	}
-	
 	public String getModifications(Commit commit) {
 		String modifications = "["; 
 		for(Modification m : commit.getModifications()) {
