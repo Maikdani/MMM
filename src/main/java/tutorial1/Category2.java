@@ -14,9 +14,15 @@ import org.repodriller.scm.SCMRepository;
 
 public class Category2 implements CommitVisitor { 
 	public void process(SCMRepository repo, Commit commit, PersistenceMechanism writer) {
-		writer.write(
-				commit.getHash()
-		);
+		System.out.println("next");
+		for(Modification m : commit.getModifications()) {
+			writer.write(
+					commit.getHash(),
+					m.getFileName(),
+					getLA(commit, m),
+					getLD(commit, m)
+			);
+		}
 	}
 	
 	/**
@@ -24,13 +30,10 @@ public class Category2 implements CommitVisitor {
 	 * @param commit
 	 * @return
 	 */
-	public String getLA(Commit commit) {
-		DiffParser parsedDiff;
-		int count = 0;
-		for(Modification m : commit.getModifications()) {
-			parsedDiff = new DiffParser(m.getDiff());
-			count += countAdded(parsedDiff.getBlocks());
-		}
+	public String getLA(Commit commit, Modification m) {
+		DiffParser parsedDiff = new DiffParser(m.getDiff());
+		int count = countAdded(parsedDiff.getBlocks());
+		
 		return Integer.toString(count);
 	}
 	
@@ -53,13 +56,10 @@ public class Category2 implements CommitVisitor {
 	 * @param commit
 	 * @return
 	 */
-	public String getLD(Commit commit) {
-		DiffParser parsedDiff;
-		int count = 0;
-		for(Modification m : commit.getModifications()) {
-			parsedDiff = new DiffParser(m.getDiff());
-			count += countRemoved(parsedDiff.getBlocks());
-		}
+	public String getLD(Commit commit, Modification m) {
+		DiffParser parsedDiff = new DiffParser(m.getDiff());
+		int count = countRemoved(parsedDiff.getBlocks());
+		
 		return Integer.toString(count);
 	}
 	
