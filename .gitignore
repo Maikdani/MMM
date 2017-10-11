@@ -1,5 +1,5 @@
 /target/
-/projects/*
-/csv/*
+projects/*
+csv/*
 !csv/.gitkeep
 !projects/.gitkeep
