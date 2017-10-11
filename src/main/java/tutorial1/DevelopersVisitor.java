@@ -112,5 +112,9 @@ public class DevelopersVisitor implements CommitVisitor {
 			return "";
 		return subsystem;
 	}
+	
+	public boolean getFIX() {
+		return true;
+	}
 
 }
