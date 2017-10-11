@@ -25,17 +25,17 @@ public class Q1Study implements Study {
 		Calendar date = Calendar.getInstance();
 		date.set(2016, 0, 1);
 		
-		//startCat1(date);
+		startCat1(date);
 		startCat2(date);
 		
 	}
 	
 	public void startCat1(Calendar date) {
-		PersistenceMechanism writer = new CSVFile("C:/Users/Maikel/Documents/GitHub/SA/csv/bugzillaCat1.csv");
+		PersistenceMechanism writer = new CSVFile("csv/bugzillaCat1.csv");
 		initWriter(writer);
 		
 		new RepositoryMining()
-		.in(GitRepository.singleProject("C:/Users/Maikel/Documents/GitHub/SA/projects/bugzilla"))
+		.in(GitRepository.singleProject("projects/bugzilla"))
 		.through(Commits.since(date))
 		.withThreads(4)
 		.process(new DevelopersVisitor(), writer)
@@ -43,11 +43,11 @@ public class Q1Study implements Study {
 	}
 	
 	public void startCat2(Calendar date) {
-		PersistenceMechanism writer2 = new CSVFile("C:/Users/Maikel/Documents/GitHub/SA/csv/bugzillaCat2.csv");
+		PersistenceMechanism writer2 = new CSVFile("csv/bugzillaCat2.csv");
 		initWriter2(writer2);
 		
 		new RepositoryMining()
-		.in(GitRepository.singleProject("C:/Users/Maikel/Documents/GitHub/SA/projects/bugzilla"))
+		.in(GitRepository.singleProject("projects/bugzilla"))
 		.through(Commits.since(date))
 		.withThreads(4)
 		.process(new Category2(), writer2)
