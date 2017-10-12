@@ -77,8 +77,30 @@ public class DevelopersVisitor implements CommitVisitor {
 	 * @param commit
 	 * @return
 	 */
-	public String getEntropy(Commit commit) {
-		return "";
+	public double getEntropy(Commit commit) {
+		int temp = 0;
+		int sum = 0;
+		int[] numMods = new int[commit.getModifications().size()];
+		int i = 0;
+		
+		for(Modification m : commit.getModifications()) {
+			temp = m.getAdded();
+			temp += m.getRemoved();
+			numMods[i] = temp;
+			i++;
+			sum += temp;
+		}
+		
+		double entropy = 0;
+		double fraction = 0;
+		
+		for(int numMod : numMods) {
+			System.out.println(entropy);
+			fraction = (double)numMod/sum;
+			entropy -= fraction*(Math.log10(fraction)/Math.log10(2));
+		}
+		
+		return entropy;
 	}
 	public String getModifications(Commit commit) {
 		String modifications = "["; 
