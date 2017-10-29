@@ -14,10 +14,12 @@
       <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
         <entry file="file://$USER_HOME$/Documents/GitHub/SA/SZZ/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="427">
-              <caret line="47" column="41" lean-forward="true" selection-start-line="47" selection-start-column="41" selection-end-line="47" selection-end-column="41" />
+            <state relative-caret-position="275">
+              <caret line="95" column="0" lean-forward="true" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
+                <element signature="e#2190#2513#1" expanded="false" />
+                <element signature="e#2930#3116#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -99,6 +101,7 @@
       <list>
         <option value="$PROJECT_DIR$/core/Gitworker.py" />
         <option value="$PROJECT_DIR$/main.py" />
+        <option value="$USER_HOME$/Documents/GitHub/SA/SZZ/main.py" />
       </list>
     </option>
   </component>
@@ -128,11 +131,6 @@
             <path>
               <item name="SZZ" type="b2602c69:ProjectViewProjectNode" />
               <item name="SZZ" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SZZ" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SZZ" type="462c0819:PsiDirectoryNode" />
-              <item name="core" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -240,6 +238,8 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
+            <element signature="e#2190#2513#1" expanded="false" />
+            <element signature="e#2930#3116#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -292,6 +292,8 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
+            <element signature="e#2190#2513#1" expanded="false" />
+            <element signature="e#2930#3116#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -356,10 +358,12 @@
     </entry>
     <entry file="file://$USER_HOME$/Documents/GitHub/SA/SZZ/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="427">
-          <caret line="47" column="41" lean-forward="true" selection-start-line="47" selection-start-column="41" selection-end-line="47" selection-end-column="41" />
+        <state relative-caret-position="275">
+          <caret line="95" column="0" lean-forward="true" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
+            <element signature="e#2190#2513#1" expanded="false" />
+            <element signature="e#2930#3116#0" expanded="false" />
           </folding>
         </state>
       </provider>
