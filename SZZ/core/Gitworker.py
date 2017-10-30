@@ -186,6 +186,8 @@ class Gitworker:
         output_log = self.g.log('-1', '--pretty="%ai"', sha1[0])
         strDate = output_log.replace('"', '').split(' ')
         strDate = strDate[0].split('-')
+        if strDate == ['']:
+            strDate = ['9999', '12', '12']
         sha1Date = datetime.date(int(strDate[0]), int(strDate[1]), int(strDate[2]))
 
         start = start.split('-')

@@ -19,8 +19,12 @@ projectNames = ["bugzilla", "rhino", "bedrock", "otrs", "tomcat", "JMeter", "act
 productIDS = ["Bugzilla", "Rhino", "Bedrock", "", "Tomcat%209", "JMeter", "activemq", "camel", "hadoop", "wicket", "maven"]
 # Rhino from start of project?? OTRS Might have to large range (to much commits)
 #              BUGZILLA        RHINO        BEDROCK        OTRS          TOMCAT        JMETER
-startDates = ["2002-01-01", "1999-01-01", "2012-01-01", "2006-01-01", "2007-01-01", "2006-01-01" ] # YEAR MONTH DAY
-endDates =   ["2012-01-01", "2013-03-01", "2015-01-01", "2014-01-01", "2008-12-31", "2014-01-01"]
+startDates = ["2002-01-01", "1999-01-01", "2012-01-01", "2008-11-01", "2007-01-01", "2004-04-01", "2008-07-01", "2009-12-01", "2012-06-01", "2006-11-01", "2007-01-01" ] # YEAR MONTH DAY
+endDates =   ["2012-01-01", "2013-03-01", "2015-01-01", "2013-12-31", "2008-12-31", "2014-04-01", "2014-10-01", "2016-02-01", "2015-08-01", "2013-10-01", "2013-10-01"]
+
+testStart = ["2007-01-01", "2007-01-01", "2007-01-01", "2007-01-01", "2007-01-01", "2007-01-01", "2007-01-01", "2007-01-01", "2007-01-01", "2007-01-01", "2007-01-01"]
+testEnd = ["2007-01-31", "2007-01-31", "2007-01-31", "2007-01-31", "2007-01-31", "2007-01-31", "2007-01-31", "2007-01-31", "2007-01-31", "2007-01-31", "2007-01-31"]
+
 # Bugzilla projects
 staticProjectName = "bugzilla"
 staticProjectName2 = "rhino"
@@ -36,13 +40,13 @@ staticProjectName10 = "wicket"
 staticProjectName11 = "maven"
 
 # Bugzilla, Rhino and mozilla (bedrock)
-restAPI1 = "https://bugzilla.mozilla.org/rest/bug?chfield=%5BBug%20creation%5D"
+restAPI1 = "https://bugzilla.mozilla.org/rest/bug?chfield=%5BBug%20creation%5D&bug_status=CLOSED"
 # Otrs
-otrsRestAPI = "https://bugs.otrs.org/rest.cgi/bug?chfield=%5BBug%20creation%5D"
+otrsRestAPI = "https://bugs.otrs.org/rest.cgi/bug?chfield=%5BBug%20creation%5D&bug_status=CLOSED"
 # Linux
-linuxRestAPI = "https://bugzilla.kernel.org/rest.cgi/bug?chfield=%5BBug%20creation%5D"
+linuxRestAPI = "https://bugzilla.kernel.org/rest.cgi/bug?chfield=%5BBug%20creation%5D&bug_status=CLOSED"
 # Tomcat + jmeter
-tomcatRestAPI = "https://bz.apache.org/bugzilla/rest.cgi/bug?chfield=%5BBug%20creation%5D"
+tomcatRestAPI = "https://bz.apache.org/bugzilla/rest.cgi/bug?chfield=%5BBug%20creation%5D&bug_status=CLOSED"
 
 APIS = [restAPI1, otrsRestAPI, tomcatRestAPI]
 
@@ -64,19 +68,40 @@ def main():
         query3 = bzapi.build_query(product = "JDT")
         result3 = bzapi.query(query3)
     """
+
+    # For testing a single month of each project
+    startDates = testStart
+    endDates = testEnd
+
+
     projectName = "No project"
-    i = 0
-    for project in projectNames:
-        projectName = project
-        projectID = productIDS[i]
-        startDateStr = startDates[i]
-        stopDateStr = endDates[i]
-        if i < 4:
+    runSingleProject = False
+    projectNumber = 0
+    while projectNumber < len(projectNames):
+        issuesList = []
+        csvDict = {}
+
+
+        projectName = projectNames[projectNumber]
+        projectID = productIDS[projectNumber]
+        startDateStr = startDates[projectNumber]
+        stopDateStr = endDates[projectNumber]
+        if projectNumber < 3:
             rest = APIS[0]
-        elif i == 4:
+        elif projectNumber == 3:
             rest = APIS[1]
-        elif i == 5 or i == 6:
+        elif projectNumber == 4 or projectNumber == 5:
             rest = APIS[2]
+
+        if runSingleProject:
+            x = 0
+            projectName = projectNames[x]
+            projectID = productIDS[x]
+            startDateStr = startDates[x]
+            stopDateStr = endDates[x]
+            rest = APIS[0] # PICK CORRECT API
+
+
 
         print("Project name: " + projectName)
 
@@ -101,7 +126,7 @@ def main():
 
 
         found = 0
-        jira = JIRA(jiraRepo = "https://issues.apache.org/jira")
+        jira = JIRA("https://issues.apache.org/jira")
         with open(projectsPath + "/bug_" + projectName + ".csv", 'w', newline='') as csvfile:
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
             writer.writeheader()
@@ -112,11 +137,11 @@ def main():
             stopDate = datetime.date(int(stopDate[0]), int(stopDate[1]), int(stopDate[2]))
             found = 0
             #while startDate <= datetime.date.today():
-            if True:
+            if projectNumber < 7:
                 while startDate <= stopDate:
                     intDate = startDate + datetime.timedelta(days=30)
                     data = {'chfieldfrom': str(startDate), 'chfieldto': str(intDate), 'bug_status':'RESOLVED',
-                            'query_format': 'advanced', product : projectID}
+                            'query_format': 'advanced', product : projectID, 'include_fields': 'id,creation_time,last_change_time'}
                     issuesJSON = requests.get(rest, data)
                     issues = json.loads(issuesJSON.content)['bugs']
                     found += len(issues)
@@ -135,16 +160,20 @@ def main():
                     startDate += datetime.timedelta(days=30)
                 print("Total: " + str(found))
 
-
             gitworker = Gitworker(projectsPath + "/" + projectName)
 
             for issues in issuesList:
                 for issue in issues:
-                    bugid = issue["id"]
-                    csvDict['BUG ID'] = bugid
-                    csvDict['BUG Created'] = (issue["creation_time"]).split('T')[0]
-                    csvDict['BUG Close'] = (issue["last_change_time"]).split('T')[0]
-                    print(bugid)
+                    if projectNumber < 7:
+                        bugid = issue["id"]
+                        csvDict['BUG ID'] = bugid
+                        csvDict['BUG Created'] = (issue["creation_time"]).split('T')[0]
+                        csvDict['BUG Close'] = (issue["last_change_time"]).split('T')[0]
+                    else:
+                        bugid = issue.key
+                        csvDict['BUG ID'] = bugid
+                        csvDict['BUG Created'] = (issue.fields.created).split('T')[0]
+                        csvDict['BUG Close'] = (issue.fields.resolutiondate).split('T')[0]
                     commits = gitworker.findSHA1inlog(str(bugid))
                     for commit in commits:
                         commitId = commit.split(' ')[0]
@@ -154,7 +183,7 @@ def main():
                         print("\t" + commitId + " " + commitDate)
                         files = gitworker.getChangedFiles(commitId)
                         for file in files:
-                            if file.endswith('.java') or file.endswith('.pm') or file.endswith('.pl'):
+                            if file.endswith('.java') or file.endswith('.pm') or file.endswith('.pl') or file.endswith('.js'):
                                 hunks = gitworker.getChangesPositionForFile(file, commitId)
                                 csvDict['File path'] = file
                                 print("\t\t" + str(file))
@@ -176,11 +205,11 @@ def main():
                                             if sha1 != None:
                                                 csvDict['Bug Commit'] = sha1
                                                 csvDict['BIC'] = 'true'
-                                                if hunk.isAComment(i):
+                                                if hunk.isAComment(i, file):
                                                     csvDict['Comment'] = 1
                                                 else:
                                                     csvDict['Comment'] = 0
-                                                if hunk.isACode(i):
+                                                if hunk.isACode(i, file):
                                                     csvDict['Code'] = 1
                                                 else:
                                                     csvDict['Code'] = 0
@@ -198,6 +227,9 @@ def main():
                                             j += 1
                                         i += 1
             print("Found: " + str(found))
+            projectNumber = projectNumber + 1
+        if runSingleProject:
+            break
 
 if __name__ == '__main__':
     main()

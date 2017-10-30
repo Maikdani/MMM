@@ -31,7 +31,7 @@ class Hunk:
     def isABug(self, lineNumber):
         return True
 
-    def isAComment(self, lineNumber):
+    def isAJavaComment(self, lineNumber):
         line = self.linesDetails[lineNumber]
         line = line.replace("'", "")
         if re.match('^[-+][ \t]*\/\/', line):
@@ -47,5 +47,23 @@ class Hunk:
         else:
             return False
 
-    def isACode(self, lineNumber):
-        return not self.isAComment(lineNumber)
+    def isAPerlComment(self, lineNumber):
+        line = self.linesDetails[lineNumber]
+        line = line.replace("'", "")
+        if re.match('^[-+][ \t]*\#', line):
+            return True
+        elif re.match('^.*[;,+:()\[\]{}\/*][ \t\']*$', line):
+            return False
+        else:
+            return False
+
+    def isAComment(self, lineNumber, file):
+        if file.endswith(".java") or file.endswith(".js"):
+            return self.isAJavaComment(lineNumber)
+        elif file.endswith(".pm") or file.endswith(".pl"):
+            return self.isAPerlComment(lineNumber)
+        else:
+            return self.isAComment(lineNumber)
+
+    def isACode(self, lineNumber, file):
+        return not self.isAComment(lineNumber, file)
