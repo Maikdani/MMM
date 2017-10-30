@@ -1,1 +1,18 @@
 Hash,Paths,NS,ND,NF,Entropy
+7398c1d65281cf04584652f3b854dc5e9d471175,[editcomponents.cgi],1,1,1,0.0,true
+f15fc6e6632c6a360b5f620cf929084a07a4c403,[attachment.cgi],1,1,1,0.0,true
+5febefd7ed4197e72c488c96225a983ecaeb3dde,[enter_bug.cgi],1,1,1,0.0,true
+2ddb47368170e74243086863fedc925300b45dd8,"[Bugzilla/Token.pm, CGI.pl, Token.pm, globals.pl, importxml.pl, move.pl, processmail, whineatnews.pl]",2,2,8,2.9219280948873623,true
+90c95ff3e9c30f3c75b0c93af12b7317902ada3a,[template/default/entry/enter_bug.tmpl],1,1,1,0.0,false
+d4750d0cc42ea4cbdd592e165cbb1efe5d5264fb,[editgroups.cgi],1,1,1,0.0,true
+c9c320bd1cdf00d3193fa11931456582ae27b275,[template/default/query/query.atml],1,1,1,0.0,true
+788e94b41f8124a05c6f25bf3084fcdaa36f4d63,"[CGI.pl, checksetup.pl, editusers.cgi, globals.pl, relogin.cgi, token.cgi, userprefs.cgi]",1,1,7,2.37523442760595,true
+7fa045d01faf68f35814861d4c13ab8a7127c0d4,[attachment.cgi],1,1,1,0.0,true
+2da47954b2518c7340c42d675fe2572b815b0865,[move.pl],1,1,1,0.0,true
+b5aa3e4f8caa39de11efc8b8c28eeaf09f4cc9db,[template/default/attachment/edit.atml],1,1,1,0.0,true
+99f91c7995f510e1ec2ae36224b935379bdc5f84,[checksetup.pl],1,1,1,0.0,true
+9612f5b87b1503cdfc56c8170bead7cd47de783e,"[CGI.pl, defparams.pl, post_bug.cgi, process_bug.cgi, query.cgi]",1,1,5,1.6391264941682426,true
+2af3fccf9d416da2fb0828a3f237991364abf01d,[template/default/query/query.atml],1,1,1,0.0,true
+0742929eb43ee5e3e67b59a9159ca416cbd0d4be,"[CGI.pl, globals.pl, template/default/global/header, template/default/global/message.html.tmpl]",2,2,4,1.541119589484021,true
+a063aa364c6cafb341a1884691516fcc78a1187a,"[enter_bug.cgi, template/default/entry/enter_bug.tmpl, template/default/global/choose_product.tmpl]",2,3,3,1.1437377681854257,true
+5f66b5e790a7f4951e1f427ebd183c92b06b9c10,[checksetup.pl],1,1,1,0.0,false

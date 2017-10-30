@@ -1,5 +1,6 @@
 package tutorial1;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -14,6 +15,16 @@ import org.repodriller.persistence.csv.CSVFile;
 import org.repodriller.scm.GitRepository;
 
 public class Q1Study implements Study {
+	private ArrayList<Calendar> fromDates;
+	private ArrayList<Calendar> toDates;
+	
+	private String[] startDates = {"2002-01-01", "1999-01-01", "2012-01-01", "2008-11-01", "2007-01-01", "2004-04-01", "2008-07-01", "2009-12-01", "2012-06-01", "2006-11-01", "2007-01-01"};
+	private String[] endDates = {"2012-01-01", "2013-03-01", "2015-01-01", "2013-12-31", "2008-12-31", "2014-04-01", "2014-10-01", "2016-02-01", "2015-08-01", "2013-10-01", "2013-10-01"};
+	
+	private String[] projectNames = {"bugzilla", "rhino", "bedrock", "otrs", "tomcat", "jmeter", "activemq", "camel", "hadoop", "wicket", "maven"};
+	
+	private String projects = "SZZ/projects/";
+	private String csvs = "SZZ/csv/";
 
 	public static void main(String[] args) {		
 		BasicConfigurator.configure();
@@ -22,32 +33,54 @@ public class Q1Study implements Study {
 	
 	
 	public void execute() {		
-		Calendar date = Calendar.getInstance();
-		date.set(2016, 0, 1);
-		
-		//startCat1(date);
-		startCat2(date);
+		// Test with only 10 days
+		/* 
+		String[] testStartDates = {"2002-01-01", "1999-01-01", "2012-01-01", "2008-11-01", "2007-01-01", "2004-04-01", "2008-07-01", "2009-12-01", "2012-06-01", "2006-11-01", "2007-01-01"};
+		String[] testEndDates = {"2002-01-11", "1999-01-11", "2012-01-11", "2008-11-11", "2007-01-11", "2004-04-11", "2008-07-11", "2009-12-11", "2012-06-11", "2006-11-11", "2007-01-11"};	
+		startDates = testStartDates;
+		endDates = testEndDates;
+		*/
+		fromDates = getDates(startDates);
+		toDates = getDates(endDates);
+		int index = 0;
+		while(index < projectNames.length) {
+			startCat1(projectNames[index], fromDates.get(index), toDates.get(index));
+			startCat2(projectNames[index], fromDates.get(index), toDates.get(index));
+			index++;
+		}
 	}
 	
-	public void startCat1(Calendar date) {
-		PersistenceMechanism writer = new CSVFile("csv/bugzillaCat1.csv");
+	public ArrayList<Calendar> getDates(String[] dates) {
+		String[] curDate;
+		ArrayList<Calendar> datesList = new ArrayList<Calendar>();
+		for(String date : dates) {
+			curDate = date.split("-");
+			Calendar newdate = Calendar.getInstance();
+			newdate.set(Integer.parseInt(curDate[0]), Integer.parseInt(curDate[1]), Integer.parseInt(curDate[2]));
+			datesList.add(newdate);
+		}
+		return datesList;
+	}
+	
+	public void startCat1(String project, Calendar from, Calendar to) {
+		PersistenceMechanism writer = new CSVFile(csvs + project + "Cat1.csv");
 		initWriter(writer);
 		
 		new RepositoryMining()
-		.in(GitRepository.singleProject("projects/bugzilla"))
-		.through(Commits.since(date))
+		.in(GitRepository.singleProject(projects + project))
+		.through(Commits.betweenDates(from, to))
 		.withThreads(4)
 		.process(new DevelopersVisitor(), writer)
 		.mine();
 	}
 	
-	public void startCat2(Calendar date) {
-		PersistenceMechanism writer2 = new CSVFile("csv/bugzillaCat2.csv");
+	public void startCat2(String project, Calendar from, Calendar to) {
+		PersistenceMechanism writer2 = new CSVFile(csvs + project + "Cat2.csv");
 		initWriter2(writer2);
 		
 		new RepositoryMining()
-		.in(GitRepository.singleProject("projects/bugzilla"))
-		.through(Commits.since(date))
+		.in(GitRepository.singleProject(projects + project))
+		.through(Commits.betweenDates(from, to))
 		.withThreads(4)
 		.process(new Category2(), writer2)
 		.mine();

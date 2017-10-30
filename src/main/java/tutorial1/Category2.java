@@ -14,8 +14,6 @@ import org.repodriller.scm.SCMRepository;
 public class Category2 implements CommitVisitor { 
 	public void process(SCMRepository repo, Commit commit, PersistenceMechanism writer) {
 		for(Modification m : commit.getModifications()) {
-			if(!m.getType().name().equals("MODIFY"))
-				System.out.println(m.getType().name());
 			writer.write(
 					commit.getHash(),
 					m.getFileName(),

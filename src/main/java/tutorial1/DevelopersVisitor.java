@@ -95,8 +95,10 @@ public class DevelopersVisitor implements CommitVisitor {
 		double fraction = 0;
 		
 		for(int numMod : numMods) {
-			fraction = (double)numMod/sum;
-			entropy -= fraction*(Math.log10(fraction)/Math.log10(2));
+			if(numMod != 0){
+				fraction = (double)numMod/sum;
+				entropy -= fraction*(Math.log10(fraction)/Math.log10(2));
+			}
 		}
 		
 		return entropy;
