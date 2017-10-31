@@ -70,8 +70,8 @@ def main():
     """
 
     # For testing a single month of each project
-    startDates = testStart
-    endDates = testEnd
+    # startDates = testStart
+    # endDates = testEnd
 
 
     projectName = "No project"
@@ -137,7 +137,7 @@ def main():
             stopDate = datetime.date(int(stopDate[0]), int(stopDate[1]), int(stopDate[2]))
             found = 0
             #while startDate <= datetime.date.today():
-            if projectNumber < 7:
+            if projectNumber < 6:
                 while startDate <= stopDate:
                     intDate = startDate + datetime.timedelta(days=30)
                     data = {'chfieldfrom': str(startDate), 'chfieldto': str(intDate), 'bug_status':'RESOLVED',
@@ -164,7 +164,7 @@ def main():
 
             for issues in issuesList:
                 for issue in issues:
-                    if projectNumber < 7:
+                    if projectNumber < 6:
                         bugid = issue["id"]
                         csvDict['BUG ID'] = bugid
                         csvDict['BUG Created'] = (issue["creation_time"]).split('T')[0]
@@ -195,37 +195,38 @@ def main():
                                     print("\t\tAt line: " + str(hunk.positionNew + hunk.linesBefore) + " added: " + str(hunk.linesAdded) + "\tAt line: " + str(
                                         hunk.positionOld + hunk.linesBefore) + " removed: " + str(hunk.linesRemoved))
                                     i = j = 0
-                                    for line in hunk.linesType:
-                                        # if j > 10000:
-                                        #     break;
-                                        if line == "-":
-                                            bugLine = hunk.positionOld + j
-                                            csvDict['Bug Line'] = bugLine
-                                            sha1 = gitworker.getHashFromBlame(commitId, file, bugLine, startDateStr, stopDateStr)
-                                            if sha1 != None:
-                                                csvDict['Bug Commit'] = sha1
-                                                csvDict['BIC'] = 'true'
-                                                if hunk.isAComment(i, file):
-                                                    csvDict['Comment'] = 1
-                                                else:
-                                                    csvDict['Comment'] = 0
-                                                if hunk.isACode(i, file):
-                                                    csvDict['Code'] = 1
-                                                else:
-                                                    csvDict['Code'] = 0
-                                                print(str(i) + ") " + sha1 + " " + hunk.linesDetails[i])
+                                    if hunk.linesBefore != 0:
+                                        for line in hunk.linesType:
+                                            # if j > 10000:
+                                            #     break;
+                                            if line == "-":
+                                                bugLine = hunk.positionOld + j
+                                                csvDict['Bug Line'] = bugLine
+                                                sha1 = gitworker.getHashFromBlame(commitId, file, bugLine, startDateStr, stopDateStr)
+                                                if sha1 != None:
+                                                    csvDict['Bug Commit'] = sha1
+                                                    csvDict['BIC'] = 'true'
+                                                    if hunk.isAComment(i, file):
+                                                        csvDict['Comment'] = 1
+                                                        csvDict['Code'] = 0
+                                                    else:
+                                                        csvDict['Comment'] = 0
+                                                        csvDict['Code'] = 1
+                                                    print(str(i) + ") " + sha1 + " " + hunk.linesDetails[i])
+                                                    writer.writerow(csvDict)
+                                                    found += 1
+                                            """"
+                                            elif line == "+":
+                                                csvDict['Bug Line'] = ''
+                                                csvDict['Bug Commit'] = ''
+                                                csvDict['Comment'] = ''
+                                                csvDict['Code'] = ''
+                                                csvDict['BIC'] = 'false'
                                                 writer.writerow(csvDict)
-                                                found += 1
-                                        elif line == "+":
-                                            csvDict['Bug Line'] = ''
-                                            csvDict['Bug Commit'] = ''
-                                            csvDict['Comment'] = ''
-                                            csvDict['Code'] = ''
-                                            csvDict['BIC'] = 'false'
-                                            writer.writerow(csvDict)
-                                        if line == "=" or line == "-":
-                                            j += 1
-                                        i += 1
+                                            """
+                                            if line == "=" or line == "-":
+                                                j += 1
+                                            i += 1
             print("Found: " + str(found))
             projectNumber = projectNumber + 1
         if runSingleProject:

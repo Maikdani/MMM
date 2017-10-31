@@ -43,9 +43,14 @@ public class Q1Study implements Study {
 		fromDates = getDates(startDates);
 		toDates = getDates(endDates);
 		int index = 0;
+		boolean singleProject = false;
+		
+		
 		while(index < projectNames.length) {
 			startCat1(projectNames[index], fromDates.get(index), toDates.get(index));
-			startCat2(projectNames[index], fromDates.get(index), toDates.get(index));
+			// startCat2(projectNames[index], fromDates.get(index), toDates.get(index));
+			if(singleProject)
+				break;
 			index++;
 		}
 	}
@@ -105,7 +110,8 @@ public class Q1Study implements Study {
 				"NS",
 				"ND",
 				"NF",
-				"Entropy"
+				"Entropy",
+				"FIX"
 		);
 	}
 	

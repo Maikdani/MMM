@@ -133,18 +133,18 @@ public class DevelopersVisitor implements CommitVisitor {
 		return subsystem;
 	}
 	
-	public boolean getFIX(Commit commit) {
+	public int getFIX(Commit commit) {
 		String msg = commit.getMsg().toLowerCase();
 		if(msg.contains("bug"))
-			return true;
+			return 1;
 		else if(msg.contains("fix"))
-			return true;
+			return 1;
 		else if(msg.contains("defect"))
-			return true;
+			return 1;
 		else if(msg.contains("patch"))
-			return true;
+			return 1;
 		else
-			return false;
+			return 0;
 	}
 
 }
