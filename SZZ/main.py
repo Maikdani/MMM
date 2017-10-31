@@ -195,7 +195,7 @@ def main():
                                     print("\t\tAt line: " + str(hunk.positionNew + hunk.linesBefore) + " added: " + str(hunk.linesAdded) + "\tAt line: " + str(
                                         hunk.positionOld + hunk.linesBefore) + " removed: " + str(hunk.linesRemoved))
                                     i = j = 0
-                                    if hunk.linesBefore != 0:
+                                    if hunk.linesBefore != 0 or hunk.linesRemoved != 0:
                                         for line in hunk.linesType:
                                             # if j > 10000:
                                             #     break;
