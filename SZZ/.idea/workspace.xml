@@ -14,12 +14,12 @@
       <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
         <entry file="file://$USER_HOME$/Documents/GitHub/SA/SZZ/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="172">
-              <caret line="197" column="0" lean-forward="false" selection-start-line="197" selection-start-column="0" selection-end-line="197" selection-end-column="0" />
+            <state relative-caret-position="206">
+              <caret line="21" column="185" lean-forward="true" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="185" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
-                <element signature="e#2736#3059#1" expanded="false" />
-                <element signature="e#4041#4227#0" expanded="false" />
+                <element signature="e#2726#3049#1" expanded="false" />
+                <element signature="e#4009#4195#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -250,13 +250,6 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$USER_HOME$/Documents/GitHub/SA/SZZ/main.py</url>
-          <line>165</line>
-          <option name="timeStamp" value="125" />
-        </line-breakpoint>
-      </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
@@ -283,8 +276,8 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
-            <element signature="e#2736#3059#1" expanded="false" />
-            <element signature="e#4041#4227#0" expanded="false" />
+            <element signature="e#2726#3049#1" expanded="false" />
+            <element signature="e#4009#4195#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -337,8 +330,8 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
-            <element signature="e#2736#3059#1" expanded="false" />
-            <element signature="e#4041#4227#0" expanded="false" />
+            <element signature="e#2726#3049#1" expanded="false" />
+            <element signature="e#4009#4195#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -411,12 +404,12 @@
     </entry>
     <entry file="file://$USER_HOME$/Documents/GitHub/SA/SZZ/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
-          <caret line="197" column="0" lean-forward="false" selection-start-line="197" selection-start-column="0" selection-end-line="197" selection-end-column="0" />
+        <state relative-caret-position="206">
+          <caret line="21" column="185" lean-forward="true" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="185" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
-            <element signature="e#2736#3059#1" expanded="false" />
-            <element signature="e#4041#4227#0" expanded="false" />
+            <element signature="e#2726#3049#1" expanded="false" />
+            <element signature="e#4009#4195#0" expanded="false" />
           </folding>
         </state>
       </provider>

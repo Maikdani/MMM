@@ -15,12 +15,12 @@ import json
 # Use JIRA, Bugzilla REST API and Gitworker facility packages
 
 projectsPath = "projects"
-projectNames = ["bugzilla", "rhino", "bedrock", "otrs", "tomcat", "JMeter", "activemq", "camel", "hadoop", "wicket", "maven"]
-productIDS = ["Bugzilla", "Rhino", "Bedrock", "", "Tomcat%209", "JMeter", "activemq", "camel", "hadoop", "wicket", "maven"]
+projectNames = ["bugzilla", "rhino", "bedrock", "otrs", "JMeter", "zookeeper" "activemq", "camel", "hadoop", "wicket", "maven"]
+productIDS = ["Bugzilla", "Rhino", "Bedrock", "", "JMeter", "zookeeper", "activemq", "camel", "hadoop", "wicket", "maven"]
 # Rhino from start of project?? OTRS Might have to large range (to much commits)
-#              BUGZILLA        RHINO        BEDROCK        OTRS          TOMCAT        JMETER
-startDates = ["2002-01-01", "1999-01-01", "2012-01-01", "2008-11-01", "2007-01-01", "2004-04-01", "2008-07-01", "2009-12-01", "2012-06-01", "2006-11-01", "2007-01-01" ] # YEAR MONTH DAY
-endDates =   ["2012-01-01", "2013-03-01", "2015-01-01", "2013-12-31", "2008-12-31", "2014-04-01", "2014-10-01", "2016-02-01", "2015-08-01", "2013-10-01", "2013-10-01"]
+#              BUGZILLA        RHINO        BEDROCK        OTRS         JMETER
+startDates = ["2005-01-01", "1999-01-01", "2012-01-01", "2009-11-01", "2008-07-01", "2008-07-01", "2008-07-01", "2010-08-01", "2013-06-01", "2006-11-01", "2007-01-01" ] # YEAR MONTH DAY
+endDates =   ["2009-01-01", "2013-03-01", "2014-01-01", "2011-05-31", "2011-04-01", "2016-02-01",  "2012-10-01", "2012-01-01", "2014-08-01", "2008-10-01", "2012-10-01"]
 
 testStart = ["2007-01-01", "2007-01-01", "2007-01-01", "2007-01-01", "2007-01-01", "2007-01-01", "2007-01-01", "2007-01-01", "2007-01-01", "2007-01-01", "2007-01-01"]
 testEnd = ["2007-01-31", "2007-01-31", "2007-01-31", "2007-01-31", "2007-01-31", "2007-01-31", "2007-01-31", "2007-01-31", "2007-01-31", "2007-01-31", "2007-01-31"]
@@ -30,9 +30,9 @@ staticProjectName = "bugzilla"
 staticProjectName2 = "rhino"
 staticProjectName3 = "bedrock"
 staticProjectName4 = "otrs"
-staticProjectName5 = "tomcat"
-staticProjectName6 = "JMeter"
+staticProjectName5 = "JMeter"
 #Jira
+staticProjectName6 = "zookeeper"
 staticProjectName7 = "activemq"
 staticProjectName8 = "camel"
 staticProjectName9 = "hadoop"
@@ -90,7 +90,7 @@ def main():
             rest = APIS[0]
         elif projectNumber == 3:
             rest = APIS[1]
-        elif projectNumber == 4 or projectNumber == 5:
+        elif projectNumber == 4:
             rest = APIS[2]
 
         if runSingleProject:
@@ -137,7 +137,7 @@ def main():
             stopDate = datetime.date(int(stopDate[0]), int(stopDate[1]), int(stopDate[2]))
             found = 0
             #while startDate <= datetime.date.today():
-            if projectNumber < 6:
+            if projectNumber < 5:
                 while startDate <= stopDate:
                     intDate = startDate + datetime.timedelta(days=30)
                     data = {'chfieldfrom': str(startDate), 'chfieldto': str(intDate), 'bug_status':'RESOLVED',
@@ -164,7 +164,7 @@ def main():
 
             for issues in issuesList:
                 for issue in issues:
-                    if projectNumber < 6:
+                    if projectNumber < 5:
                         bugid = issue["id"]
                         csvDict['BUG ID'] = bugid
                         csvDict['BUG Created'] = (issue["creation_time"]).split('T')[0]
