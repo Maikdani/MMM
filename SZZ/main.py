@@ -19,15 +19,8 @@ projectNames = ["bugzilla", "rhino", "bedrock", "otrs", "JMeter", "zookeeper", "
 productIDS = ["Bugzilla", "Rhino", "Bedrock", "", "JMeter", "zookeeper", "activemq", "camel", "hadoop", "wicket", "maven"]
 # Rhino from start of project?? OTRS Might have to large range (to much commits)
 #              BUGZILLA        RHINO        BEDROCK        OTRS         JMETER
-startDates = ["2005-01-01", "1999-01-01", "2012-01-01", "2009-11-01", "2008-07-01", "2008-07-01", "2008-07-01", "2010-08-01", "2013-06-01", "2007-04-02", "2007-01-01" ] # YEAR MONTH DAY
+startDates = ["2005-01-01", "1999-01-01", "2012-01-01", "2009-11-01", "2008-07-01", "2008-07-01", "2008-07-01", "2010-08-01", "2013-06-01", "2006-11-01", "2007-01-01" ] # YEAR MONTH DAY
 endDates =   ["2009-01-01", "2013-03-01", "2014-01-01", "2011-05-31", "2011-04-01", "2016-02-01",  "2012-10-01", "2012-01-01", "2014-08-01", "2008-10-01", "2012-10-01"]
-# wicket1 "2006-11-01" "2006-11-15"
-# wicket2 "2006-11-15" "2006-12-05"
-# wicket3 "2006-12-05" "2007-01-02"
-# wicket3 "2007-01-02" "2007-01-31"
-# wicket3 "2007-02-01" "2007-03-02" Only have 03-01 03-02 MISSING
-# wicket3 "2007-03-03" "2007-04-01" Only have 03-27 04-01 MISSING
-
 
 testStart = ["2007-01-01", "2007-01-01", "2007-01-01", "2007-01-01", "2007-01-01", "2007-01-01", "2007-01-01", "2007-01-01", "2007-01-01", "2007-01-01", "2007-01-01"]
 testEnd = ["2007-01-31", "2007-01-31", "2007-01-31", "2007-01-31", "2007-01-31", "2007-01-31", "2007-01-31", "2007-01-31", "2007-01-31", "2007-01-31", "2007-01-31"]
@@ -82,7 +75,7 @@ def main():
 
     projectName = "No project"
     runSingleProject = False
-    projectNumber = 9
+    projectNumber = 5
     while projectNumber < len(projectNames):
         issuesList = []
         csvDict = {}
@@ -180,7 +173,24 @@ def main():
                         csvDict['BUG ID'] = bugid
                         csvDict['BUG Created'] = (issue.fields.created).split('T')[0]
                         csvDict['BUG Close'] = (issue.fields.resolutiondate).split('T')[0]
+
                     commits = gitworker.findSHA1inlog(str(bugid))
+
+                    bugid2 = bugid + ":"
+                    commits2 = gitworker.findSHA1inlog(str(bugid2))
+                    for commit2 in commits2:
+                        commits.insert(0, commit2)
+
+                    bugid3 = "\[" + bugid + "\]"
+                    commits3 = gitworker.findSHA1inlog(str(bugid3))
+                    for commit3 in commits3:
+                        commits.insert(0, commit3)
+
+                    bugid4 = bugid + "\."
+                    commits4 = gitworker.findSHA1inlog(str(bugid4))
+                    for commit4 in commits4:
+                        commits.insert(0, commit4)
+
                     for commit in commits:
                         commitId = commit.split(' ')[0]
                         commitDate = commit.split(' ')[1]
