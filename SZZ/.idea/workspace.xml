@@ -12,21 +12,21 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
-        <entry file="file://$USER_HOME$/Documents/GitHub/SA/SZZ/main.py">
+        <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="206">
-              <caret line="21" column="185" lean-forward="true" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="185" />
+            <state relative-caret-position="308">
+              <caret line="205" column="0" lean-forward="false" selection-start-line="205" selection-start-column="0" selection-end-line="205" selection-end-column="0" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
-                <element signature="e#2726#3049#1" expanded="false" />
-                <element signature="e#4009#4195#0" expanded="false" />
+                <element signature="e#2871#3194#1" expanded="false" />
+                <element signature="e#4130#4316#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="Hunk.py" pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/Documents/GitHub/SA/SZZ/core/Hunk.py">
+        <entry file="file://$PROJECT_DIR$/core/Hunk.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="136">
               <caret line="8" column="22" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="22" />
@@ -38,7 +38,7 @@
       <file leaf-file-name="client.py" pinned="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/Anaconda3/Lib/xmlrpc/client.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="112">
+            <state relative-caret-position="15317">
               <caret line="910" column="74" lean-forward="false" selection-start-line="910" selection-start-column="74" selection-end-line="910" selection-end-column="74" />
               <folding />
             </state>
@@ -48,7 +48,7 @@
       <file leaf-file-name="base.py" pinned="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/Anaconda3/Lib/site-packages/bugzilla/base.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="393">
+            <state relative-caret-position="18326">
               <caret line="1084" column="37" lean-forward="false" selection-start-line="1084" selection-start-column="37" selection-end-line="1084" selection-end-column="37" />
               <folding />
             </state>
@@ -66,10 +66,10 @@
         </entry>
       </file>
       <file leaf-file-name="Gitworker.py" pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/Documents/GitHub/SA/SZZ/core/Gitworker.py">
+        <entry file="file://$PROJECT_DIR$/core/Gitworker.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="182" column="8" lean-forward="false" selection-start-line="182" selection-start-column="8" selection-end-line="182" selection-end-column="8" />
+            <state relative-caret-position="381">
+              <caret line="107" column="0" lean-forward="true" selection-start-line="107" selection-start-column="0" selection-end-line="107" selection-end-column="0" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -80,7 +80,7 @@
       <file leaf-file-name="pydevd.py" pinned="false" current-in-tab="false">
         <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="172">
+            <state relative-caret-position="16796">
               <caret line="1025" column="0" lean-forward="false" selection-start-line="1025" selection-start-column="0" selection-end-line="1025" selection-end-column="0" />
               <folding />
             </state>
@@ -121,10 +121,10 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/core/Gitworker.py" />
+        <option value="$PROJECT_DIR$/core/Hunk.py" />
+        <option value="$PROJECT_DIR$/core/Gitworker.py" />
         <option value="$PROJECT_DIR$/main.py" />
-        <option value="$USER_HOME$/Documents/GitHub/SA/SZZ/core/Hunk.py" />
-        <option value="$USER_HOME$/Documents/GitHub/SA/SZZ/core/Gitworker.py" />
-        <option value="$USER_HOME$/Documents/GitHub/SA/SZZ/main.py" />
+        <option value="$PROJECT_DIR$/main.py" />
       </list>
     </option>
   </component>
@@ -159,8 +159,8 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -192,12 +192,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$USER_HOME$/Documents/GitHub/SA/SZZ" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="SZZ" />
-      <option name="SCRIPT_NAME" value="$USER_HOME$/Documents/GitHub/SA/SZZ/main.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -228,7 +228,6 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.05625" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3997879" sideWeight="0.50416666" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32979852" sideWeight="0.49791667" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3319194" sideWeight="0.49791667" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -242,6 +241,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32979852" sideWeight="0.49791667" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -260,7 +260,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="126" />
+      <option name="time" value="141" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
@@ -270,14 +270,84 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/Documents/GitHub/SA/SZZ/main.py">
+    <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
-            <element signature="e#2726#3049#1" expanded="false" />
-            <element signature="e#4009#4195#0" expanded="false" />
+            <element signature="e#2871#3194#1" expanded="false" />
+            <element signature="e#4130#4316#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/Hunk.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="22" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Anaconda3/Lib/xmlrpc/client.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15470">
+          <caret line="910" column="74" lean-forward="false" selection-start-line="910" selection-start-column="74" selection-end-line="910" selection-end-column="74" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Anaconda3/Lib/site-packages/bugzilla/base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18428">
+          <caret line="1084" column="37" lean-forward="false" selection-start-line="1084" selection-start-column="37" selection-end-line="1084" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Anaconda3/Lib/json/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5083">
+          <caret line="301" column="4" lean-forward="false" selection-start-line="301" selection-start-column="4" selection-end-line="301" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/Gitworker.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2958">
+          <caret line="182" column="8" lean-forward="false" selection-start-line="182" selection-start-column="8" selection-end-line="182" selection-end-column="8" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17425">
+          <caret line="1025" column="0" lean-forward="false" selection-start-line="1025" selection-start-column="0" selection-end-line="1025" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_imps/_pydev_execfile.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+            <element signature="e#2871#3194#1" expanded="false" />
+            <element signature="e#4130#4316#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -314,7 +384,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Documents/GitHub/SA/SZZ/core/Gitworker.py">
+    <entry file="file://$PROJECT_DIR$/core/Gitworker.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="935">
           <caret line="63" column="23" lean-forward="true" selection-start-line="63" selection-start-column="23" selection-end-line="63" selection-end-column="23" />
@@ -324,14 +394,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Documents/GitHub/SA/SZZ/main.py">
+    <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
-            <element signature="e#2726#3049#1" expanded="false" />
-            <element signature="e#4009#4195#0" expanded="false" />
+            <element signature="e#2871#3194#1" expanded="false" />
+            <element signature="e#4130#4316#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -344,17 +414,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Documents/GitHub/SA/SZZ/bugzilla">
+    <entry file="file://$PROJECT_DIR$/bugzilla">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="16" column="13" lean-forward="true" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/Anaconda3/Lib/site-packages/bugzilla/base.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="393">
+        <state relative-caret-position="18326">
           <caret line="1084" column="37" lean-forward="false" selection-start-line="1084" selection-start-column="37" selection-end-line="1084" selection-end-column="37" />
           <folding />
         </state>
@@ -362,7 +431,7 @@
     </entry>
     <entry file="file://$USER_HOME$/Anaconda3/Lib/xmlrpc/client.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
+        <state relative-caret-position="15317">
           <caret line="910" column="74" lean-forward="false" selection-start-line="910" selection-start-column="74" selection-end-line="910" selection-end-column="74" />
           <folding />
         </state>
@@ -370,7 +439,7 @@
     </entry>
     <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
+        <state relative-caret-position="16796">
           <caret line="1025" column="0" lean-forward="false" selection-start-line="1025" selection-start-column="0" selection-end-line="1025" selection-end-column="0" />
           <folding />
         </state>
@@ -384,7 +453,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Documents/GitHub/SA/SZZ/core/Hunk.py">
+    <entry file="file://$PROJECT_DIR$/core/Hunk.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="8" column="22" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="22" />
@@ -392,24 +461,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Documents/GitHub/SA/SZZ/core/Gitworker.py">
+    <entry file="file://$PROJECT_DIR$/core/Gitworker.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="182" column="8" lean-forward="false" selection-start-line="182" selection-start-column="8" selection-end-line="182" selection-end-column="8" />
+        <state relative-caret-position="381">
+          <caret line="107" column="0" lean-forward="true" selection-start-line="107" selection-start-column="0" selection-end-line="107" selection-end-column="0" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Documents/GitHub/SA/SZZ/main.py">
+    <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="21" column="185" lean-forward="true" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="185" />
+        <state relative-caret-position="308">
+          <caret line="205" column="0" lean-forward="false" selection-start-line="205" selection-start-column="0" selection-end-line="205" selection-end-column="0" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
-            <element signature="e#2726#3049#1" expanded="false" />
-            <element signature="e#4009#4195#0" expanded="false" />
+            <element signature="e#2871#3194#1" expanded="false" />
+            <element signature="e#4130#4316#0" expanded="false" />
           </folding>
         </state>
       </provider>

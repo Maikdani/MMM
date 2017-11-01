@@ -21,7 +21,7 @@ public class Q1Study implements Study {
 	private String[] startDates = {"2005-01-01", "1999-01-01", "2012-01-01", "2009-11-01", "2008-07-01", "2008-07-01", "2008-07-01", "2010-08-01", "2013-06-01", "2006-11-01", "2007-01-01"};
 	private String[] endDates = {"2009-01-01", "2013-03-01", "2014-01-01", "2011-05-31", "2011-04-01", "2016-02-01",  "2012-10-01", "2012-01-01", "2014-08-01", "2008-10-01", "2012-10-01"};
 	
-	private String[] projectNames = {"bugzilla", "rhino", "bedrock", "otrs", "tomcat", "jmeter", "activemq", "camel", "hadoop", "wicket", "maven"};
+	private String[] projectNames = {"bugzilla", "rhino", "bedrock", "otrs", "jmeter", "zookeeper", "activemq", "camel", "hadoop", "wicket", "maven"};
 	
 	private String projects = "SZZ/projects/";
 	private String csvs = "SZZ/csv/";
@@ -48,7 +48,7 @@ public class Q1Study implements Study {
 		
 		while(index < projectNames.length) {
 			startCat1(projectNames[index], fromDates.get(index), toDates.get(index));
-			// startCat2(projectNames[index], fromDates.get(index), toDates.get(index));
+			startCat2(projectNames[index], fromDates.get(index), toDates.get(index));
 			if(singleProject)
 				break;
 			index++;

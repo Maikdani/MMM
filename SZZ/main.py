@@ -15,12 +15,16 @@ import json
 # Use JIRA, Bugzilla REST API and Gitworker facility packages
 
 projectsPath = "projects"
-projectNames = ["bugzilla", "rhino", "bedrock", "otrs", "JMeter", "zookeeper" "activemq", "camel", "hadoop", "wicket", "maven"]
+projectNames = ["bugzilla", "rhino", "bedrock", "otrs", "JMeter", "zookeeper", "activemq", "camel", "hadoop", "wicket", "maven"]
 productIDS = ["Bugzilla", "Rhino", "Bedrock", "", "JMeter", "zookeeper", "activemq", "camel", "hadoop", "wicket", "maven"]
 # Rhino from start of project?? OTRS Might have to large range (to much commits)
 #              BUGZILLA        RHINO        BEDROCK        OTRS         JMETER
-startDates = ["2005-01-01", "1999-01-01", "2012-01-01", "2009-11-01", "2008-07-01", "2008-07-01", "2008-07-01", "2010-08-01", "2013-06-01", "2006-11-01", "2007-01-01" ] # YEAR MONTH DAY
+startDates = ["2005-01-01", "1999-01-01", "2012-01-01", "2009-11-01", "2008-07-01", "2008-07-01", "2008-07-01", "2010-08-01", "2013-06-01", "2007-02-01", "2007-01-01" ] # YEAR MONTH DAY
 endDates =   ["2009-01-01", "2013-03-01", "2014-01-01", "2011-05-31", "2011-04-01", "2016-02-01",  "2012-10-01", "2012-01-01", "2014-08-01", "2008-10-01", "2012-10-01"]
+# wicket1 "2006-11-01" "2006-11-15"
+# wicket2 "2006-11-15" "2006-12-05"
+# wicket3 "2006-12-05" "2007-01-02"
+# wicket3 "2007-01-02" "2007-01-31"
 
 testStart = ["2007-01-01", "2007-01-01", "2007-01-01", "2007-01-01", "2007-01-01", "2007-01-01", "2007-01-01", "2007-01-01", "2007-01-01", "2007-01-01", "2007-01-01"]
 testEnd = ["2007-01-31", "2007-01-31", "2007-01-31", "2007-01-31", "2007-01-31", "2007-01-31", "2007-01-31", "2007-01-31", "2007-01-31", "2007-01-31", "2007-01-31"]
@@ -71,12 +75,11 @@ def main():
 
     # For testing a single month of each project
     # startDates = testStart
-    # endDates = testEnd
-
+#
 
     projectName = "No project"
     runSingleProject = False
-    projectNumber = 0
+    projectNumber = 9
     while projectNumber < len(projectNames):
         issuesList = []
         csvDict = {}
@@ -195,11 +198,13 @@ def main():
                                     print("\t\tAt line: " + str(hunk.positionNew + hunk.linesBefore) + " added: " + str(hunk.linesAdded) + "\tAt line: " + str(
                                         hunk.positionOld + hunk.linesBefore) + " removed: " + str(hunk.linesRemoved))
                                     i = j = 0
+                                    removedLines = 0
                                     if hunk.linesBefore != 0 or hunk.linesRemoved != 0:
                                         for line in hunk.linesType:
-                                            # if j > 10000:
-                                            #     break;
+                                            if removedLines > 50:
+                                                break
                                             if line == "-":
+                                                removedLines = removedLines + 1
                                                 bugLine = hunk.positionOld + j
                                                 csvDict['Bug Line'] = bugLine
                                                 sha1 = gitworker.getHashFromBlame(commitId, file, bugLine, startDateStr, stopDateStr)

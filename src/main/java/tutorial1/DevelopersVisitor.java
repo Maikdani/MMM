@@ -18,7 +18,8 @@ public class DevelopersVisitor implements CommitVisitor {
 					getND(commit),
 					getNF(commit),
 					getEntropy(commit),
-					getFIX(commit)
+					getFIX(commit),
+					isRefactor(commit)
 			);
 	}
 
@@ -142,6 +143,14 @@ public class DevelopersVisitor implements CommitVisitor {
 		else if(msg.contains("defect"))
 			return 1;
 		else if(msg.contains("patch"))
+			return 1;
+		else
+			return 0;
+	}
+	
+	public int isRefactor(Commit commit) {
+		String msg = commit.getMsg().toLowerCase();
+		if(msg.contains("refactor"))
 			return 1;
 		else
 			return 0;
