@@ -55,7 +55,7 @@ class Gitworker:
 
     def findSHA1inlog(self, cr):
         sha1List = []
-        loginfo = self.g.log('-i', '--grep=' + cr, '--pretty=format:%H %ai', '--')
+        loginfo = self.g.log('--grep=' + cr + " ", '-i','--pretty=format:%H %ai', '--')
         tmp = loginfo.strip('"')
         splitted_sha1 = tmp.split('\n')
         for sha1 in splitted_sha1:

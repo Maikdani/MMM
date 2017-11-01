@@ -19,12 +19,15 @@ projectNames = ["bugzilla", "rhino", "bedrock", "otrs", "JMeter", "zookeeper", "
 productIDS = ["Bugzilla", "Rhino", "Bedrock", "", "JMeter", "zookeeper", "activemq", "camel", "hadoop", "wicket", "maven"]
 # Rhino from start of project?? OTRS Might have to large range (to much commits)
 #              BUGZILLA        RHINO        BEDROCK        OTRS         JMETER
-startDates = ["2005-01-01", "1999-01-01", "2012-01-01", "2009-11-01", "2008-07-01", "2008-07-01", "2008-07-01", "2010-08-01", "2013-06-01", "2007-02-01", "2007-01-01" ] # YEAR MONTH DAY
+startDates = ["2005-01-01", "1999-01-01", "2012-01-01", "2009-11-01", "2008-07-01", "2008-07-01", "2008-07-01", "2010-08-01", "2013-06-01", "2007-04-02", "2007-01-01" ] # YEAR MONTH DAY
 endDates =   ["2009-01-01", "2013-03-01", "2014-01-01", "2011-05-31", "2011-04-01", "2016-02-01",  "2012-10-01", "2012-01-01", "2014-08-01", "2008-10-01", "2012-10-01"]
 # wicket1 "2006-11-01" "2006-11-15"
 # wicket2 "2006-11-15" "2006-12-05"
 # wicket3 "2006-12-05" "2007-01-02"
 # wicket3 "2007-01-02" "2007-01-31"
+# wicket3 "2007-02-01" "2007-03-02" Only have 03-01 03-02 MISSING
+# wicket3 "2007-03-03" "2007-04-01" Only have 03-27 04-01 MISSING
+
 
 testStart = ["2007-01-01", "2007-01-01", "2007-01-01", "2007-01-01", "2007-01-01", "2007-01-01", "2007-01-01", "2007-01-01", "2007-01-01", "2007-01-01", "2007-01-01"]
 testEnd = ["2007-01-31", "2007-01-31", "2007-01-31", "2007-01-31", "2007-01-31", "2007-01-31", "2007-01-31", "2007-01-31", "2007-01-31", "2007-01-31", "2007-01-31"]
@@ -187,51 +190,58 @@ def main():
                         files = gitworker.getChangedFiles(commitId)
                         for file in files:
                             if file.endswith('.java') or file.endswith('.pm') or file.endswith('.pl') or file.endswith('.js'):
-                                hunks = gitworker.getChangesPositionForFile(file, commitId)
-                                csvDict['File path'] = file
-                                print("\t\t" + str(file))
-                                for hunk in hunks:
-                                    csvDict['Fix Position'] = str(hunk.positionNew + hunk.linesBefore)
-                                    csvDict['Added'] = str(hunk.linesAdded)
-                                    csvDict['Bug Position'] = str(hunk.positionOld + hunk.linesBefore)
-                                    csvDict['Removed'] = str(hunk.linesRemoved)
-                                    print("\t\tAt line: " + str(hunk.positionNew + hunk.linesBefore) + " added: " + str(hunk.linesAdded) + "\tAt line: " + str(
-                                        hunk.positionOld + hunk.linesBefore) + " removed: " + str(hunk.linesRemoved))
-                                    i = j = 0
-                                    removedLines = 0
-                                    if hunk.linesBefore != 0 or hunk.linesRemoved != 0:
-                                        for line in hunk.linesType:
-                                            if removedLines > 50:
-                                                break
-                                            if line == "-":
-                                                removedLines = removedLines + 1
-                                                bugLine = hunk.positionOld + j
-                                                csvDict['Bug Line'] = bugLine
-                                                sha1 = gitworker.getHashFromBlame(commitId, file, bugLine, startDateStr, stopDateStr)
-                                                if sha1 != None:
-                                                    csvDict['Bug Commit'] = sha1
-                                                    csvDict['BIC'] = 'true'
-                                                    if hunk.isAComment(i, file):
-                                                        csvDict['Comment'] = 1
-                                                        csvDict['Code'] = 0
-                                                    else:
-                                                        csvDict['Comment'] = 0
-                                                        csvDict['Code'] = 1
-                                                    print(str(i) + ") " + sha1 + " " + hunk.linesDetails[i])
+                                try:
+                                    hunks = gitworker.getChangesPositionForFile(file, commitId)
+                                    csvDict['File path'] = file
+                                    print("\t\t" + str(file))
+                                    for hunk in hunks:
+                                        csvDict['Fix Position'] = str(hunk.positionNew + hunk.linesBefore)
+                                        csvDict['Added'] = str(hunk.linesAdded)
+                                        csvDict['Bug Position'] = str(hunk.positionOld + hunk.linesBefore)
+                                        csvDict['Removed'] = str(hunk.linesRemoved)
+                                        print("\t\tAt line: " + str(
+                                            hunk.positionNew + hunk.linesBefore) + " added: " + str(
+                                            hunk.linesAdded) + "\tAt line: " + str(
+                                            hunk.positionOld + hunk.linesBefore) + " removed: " + str(
+                                            hunk.linesRemoved))
+                                        i = j = 0
+                                        removedLines = 0
+                                        if hunk.linesBefore != 0 or hunk.linesRemoved != 0:
+                                            for line in hunk.linesType:
+                                                if removedLines > 50:
+                                                    break
+                                                if line == "-":
+                                                    removedLines = removedLines + 1
+                                                    bugLine = hunk.positionOld + j
+                                                    csvDict['Bug Line'] = bugLine
+                                                    sha1 = gitworker.getHashFromBlame(commitId, file, bugLine,
+                                                                                      startDateStr, stopDateStr)
+                                                    if sha1 != None:
+                                                        csvDict['Bug Commit'] = sha1
+                                                        csvDict['BIC'] = 'true'
+                                                        if hunk.isAComment(i, file):
+                                                            csvDict['Comment'] = 1
+                                                            csvDict['Code'] = 0
+                                                        else:
+                                                            csvDict['Comment'] = 0
+                                                            csvDict['Code'] = 1
+                                                        print(str(i) + ") " + sha1 + " " + hunk.linesDetails[i])
+                                                        writer.writerow(csvDict)
+                                                        found += 1
+                                                """"
+                                                elif line == "+":
+                                                    csvDict['Bug Line'] = ''
+                                                    csvDict['Bug Commit'] = ''
+                                                    csvDict['Comment'] = ''
+                                                    csvDict['Code'] = ''
+                                                    csvDict['BIC'] = 'false'
                                                     writer.writerow(csvDict)
-                                                    found += 1
-                                            """"
-                                            elif line == "+":
-                                                csvDict['Bug Line'] = ''
-                                                csvDict['Bug Commit'] = ''
-                                                csvDict['Comment'] = ''
-                                                csvDict['Code'] = ''
-                                                csvDict['BIC'] = 'false'
-                                                writer.writerow(csvDict)
-                                            """
-                                            if line == "=" or line == "-":
-                                                j += 1
-                                            i += 1
+                                                """
+                                                if line == "=" or line == "-":
+                                                    j += 1
+                                                i += 1
+                                except (ValueError, IndexError):
+                                    print('Faulty index')
             print("Found: " + str(found))
             projectNumber = projectNumber + 1
         if runSingleProject:
